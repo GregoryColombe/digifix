@@ -1,25 +1,13 @@
-/* JS Document */
-
-/******************************
-
-[Table of Contents]
-
-1. Vars and Inits
-2. Set Header
-3. Init Search
-4. Init Menu
-5. Init Google Map
-
-******************************/
+// 1. Vars and Inits
+// 2. Set Header
+// 3. Init Search
+// 4. Init Menu
+// 5. Init Google Map
 
 $(document).ready(function () {
     "use strict";
 
-    /* 
-
-    1. Vars and Inits
-
-    */
+    // 1. Vars and Inits
 
     var header = $('.header');
     var hambActive = false;
@@ -40,9 +28,7 @@ $(document).ready(function () {
     initMenu();
     initGoogleMap();
 
-    /* 
-    2. Set Header
-    */
+    // 2. Set Header
 
     function setHeader() {
         if ($(window).scrollTop() > 100) {
@@ -52,9 +38,7 @@ $(document).ready(function () {
         }
     }
 
-    /* 
-    3. Init Search
-    */
+    // 3. Init Search
 
     function initSearch() {
         if ($('.search').length && $('.search_panel').length) {
@@ -67,9 +51,7 @@ $(document).ready(function () {
         }
     }
 
-    /* 
-    4. Init Menu
-    */
+    // 4. Init Menu
 
     function initMenu() {
         if ($('.hamburger').length) {
@@ -143,12 +125,9 @@ $(document).ready(function () {
         menuActive = false;
     }
 
-    /* 
 
-    5. Init Google Map
-
-    */
-
+    // 5. Init Google Map
+    
     function initGoogleMap() {
         const defaultPosition = new google.maps.LatLng(48.86192797558556, 2.3618762179900044);
         const digifixPuteaux = new google.maps.LatLng(48.862725, 2.287592);
@@ -253,7 +232,7 @@ $(document).ready(function () {
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
         // Marker Digifix
-        const image = "http://digifix.fr/wp-content/uploads/2016/07/logo-dark.png";
+        const image = "../images/logo.png";
         var myMarkerOptions = {
             position: digifixPuteaux,
             map: map,
