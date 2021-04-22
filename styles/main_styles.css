@@ -45,7 +45,7 @@ p a {
     display: inline;
     position: relative;
     color: inherit;
-    border-bottom: solid 1px #ffa07f;
+    border-bottom: solid 1px #8440cb;
     -webkit-transition: all 200ms ease;
     -moz-transition: all 200ms ease;
     -ms-transition: all 200ms ease;
@@ -75,7 +75,7 @@ p a:active {
 
 p a:hover {
     color: #fff;
-    background: #ffa07f
+    background: #8440cb;
 }
 
 p a:hover::after {
@@ -362,7 +362,7 @@ section {
 }
 
 .main_nav>ul>li>a {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: #767676;
     -webkit-transition: all 200ms ease;
@@ -629,7 +629,7 @@ section {
 .menu {
     position: fixed;
     top: 0;
-    right: -400px;
+    left: -400px;
     width: 400px;
     height: 100vh;
     background: #e4e4e4;
@@ -637,7 +637,7 @@ section {
 }
 
 .menu.active {
-    right: 0
+    left: 0
 }
 
 .menu_container {
@@ -651,10 +651,9 @@ section {
 }
 
 .page_menu_content {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 0 35px;
     overflow: hidden;
-    text-align: right
+    text-align: left
 }
 
 .page_menu_search {
@@ -781,12 +780,12 @@ section {
 .menu_close {
     position: absolute;
     top: 25px;
-    right: 25px;
+    left: 50%;
     cursor: pointer
 }
 
 .menu_close i {
-    font-size: 16px;
+    font-size: 1.25rem;
     color: #1b1b1b;
     padding: 5px
 }

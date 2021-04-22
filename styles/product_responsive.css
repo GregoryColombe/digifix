@@ -209,11 +209,11 @@
 
     .menu {
         width: 100vw;
-        right: -100vw;
+        left: -100vw;
     }
 
     .menu_container {
-        padding-top: 80px;
+        padding-top: 20vh;
     }
 
     .page_menu_item>a,

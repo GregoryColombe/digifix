@@ -150,10 +150,13 @@ $(document).ready(function () {
     */
 
     function initGoogleMap() {
-        var myLatlng = new google.maps.LatLng(48.861928, 2.4415278);
+        const defaultPosition = new google.maps.LatLng(48.86192797558556, 2.3618762179900044);
+        const digifixPuteaux = new google.maps.LatLng(48.862725, 2.287592);
+        const digifixMontreuil = new google.maps.LatLng(48.861928, 2.4415278);
+        
         var mapOptions = {
-            center: myLatlng,
-            zoom: 18,
+            center: digifixPuteaux,
+            zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             draggable: true,
             scrollwheel: false,
@@ -161,10 +164,10 @@ $(document).ready(function () {
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_CENTER
             },
-            mapTypeControl: false,
-            scaleControl: false,
-            streetViewControl: false,
-            rotateControl: false,
+            mapTypeControl: true,
+            scaleControl: true,
+            streetViewControl: true,
+            rotateControl: true,
             fullscreenControl: true,
             styles: [{
                     "featureType": "landscape",
@@ -248,6 +251,23 @@ $(document).ready(function () {
 
         // Initialize a map with options
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        // Marker Digifix
+        const image = "http://digifix.fr/wp-content/uploads/2016/07/logo-dark.png";
+        var myMarkerOptions = {
+            position: digifixPuteaux,
+            map: map,
+            icon: image,
+        }
+
+        var myMarkerPuteau = new google.maps.Marker(myMarkerOptions);
+
+        var myMarkerOptions2 = {
+            position: digifixMontreuil,
+            map: map,
+            icon: image,
+        }
+        var myMarkerMontreuil = new google.maps.Marker(myMarkerOptions2);
 
         // Re-center map after window resize
         google.maps.event.addDomListener(window, 'resize', function () {

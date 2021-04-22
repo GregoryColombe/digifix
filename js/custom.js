@@ -30,11 +30,11 @@ $(document).ready(function () {
                 items: 1,
                 autoplay: true,
                 autoplayTimeout: 10000,
-                loop: true,
-                nav: false,
                 smartSpeed: 1200,
                 dotsSpeed: 1200,
-                fluidSpeed: 1200
+                fluidSpeed: 1200,
+                loop: true,
+                nav: false
             });
             if ($('.home_slider_custom_dot').length) {
                 $('.home_slider_custom_dot').on('click', function () {
@@ -71,15 +71,15 @@ $(document).ready(function () {
         }
     }
 
-    function initSearch() {
-        if ($('.search').length && $('.search_panel').length) {
-            var search = $('.search');
-            var panel = $('.search_panel');
-            search.on('click', function () {
-                panel.toggleClass('active');
-            });
-        }
-    }
+    // function initSearch() {
+    //     if ($('.search').length && $('.search_panel').length) {
+    //         var search = $('.search');
+    //         var panel = $('.search_panel');
+    //         search.on('click', function () {
+    //             panel.toggleClass('active');
+    //         });
+    //     }
+    // }
 
     function initMenu() {
         if ($('.hamburger').length) {
@@ -146,34 +146,34 @@ $(document).ready(function () {
         menuActive = false;
     }
 
-    function initIsotope() {
-        var sortingButtons = $('.product_sorting_btn');
-        var sortNums = $('.num_sorting_btn');
-        if ($('.product_grid').length) {
-            var grid = $('.product_grid').isotope({
-                itemSelector: '.product',
-                layoutMode: 'fitRows',
-                fitRows: {
-                    gutter: 30
-                },
-                getSortData: {
-                    price: function (itemElement) {
-                        var priceEle = $(itemElement).find('.product_price').text().replace('$', '');
-                        return parseFloat(priceEle);
-                    },
-                    name: '.product_name',
-                    stars: function (itemElement) {
-                        var starsEle = $(itemElement).find('.rating');
-                        var stars = starsEle.attr("data-rating");
-                        return stars;
-                    }
-                },
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear',
-                    queue: false
-                }
-            });
-        }
-    }
+    // function initIsotope() {
+    //     var sortingButtons = $('.product_sorting_btn');
+    //     var sortNums = $('.num_sorting_btn');
+    //     if ($('.product_grid').length) {
+    //         var grid = $('.product_grid').isotope({
+    //             itemSelector: '.product',
+    //             layoutMode: 'fitRows',
+    //             fitRows: {
+    //                 gutter: 30
+    //             },
+    //             getSortData: {
+    //                 price: function (itemElement) {
+    //                     var priceEle = $(itemElement).find('.product_price').text().replace('$', '');
+    //                     return parseFloat(priceEle);
+    //                 },
+    //                 name: '.product_name',
+    //                 stars: function (itemElement) {
+    //                     var starsEle = $(itemElement).find('.rating');
+    //                     var stars = starsEle.attr("data-rating");
+    //                     return stars;
+    //                 }
+    //             },
+    //             animationOptions: {
+    //                 duration: 750,
+    //                 easing: 'linear',
+    //                 queue: false
+    //             }
+    //         });
+    //     }
+    // }
 });
