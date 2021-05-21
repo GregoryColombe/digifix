@@ -252,8 +252,8 @@ $(document).ready(function () {
         google.maps.event.addDomListener(window, 'resize', function () {
             setTimeout(function () {
                 google.maps.event.trigger(map, "resize");
-                map.setCenter(myLatlng);
-            }, 1400);
+                // map.setCenter(digifixPuteaux);
+            }, 500);
         });
     }
 
