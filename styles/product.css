@@ -1446,5 +1446,5 @@ section {
 }
 
 .footer_social ul li a i:hover {
-    color: #FFFFFF;
+    opacity: 0.25;
 }
