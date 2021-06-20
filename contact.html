@@ -123,7 +123,6 @@
                             <div class="contact_form_container">
                                 <form method="get" id="contact_form" class="contact_form" >
                                     <div>
-
                                         <label for="contact_subject">Sujet</label>
                                         <input type="text" id="contact_subject" class="contact_input">
                                     </div>
@@ -145,8 +144,7 @@
                                 <ul>
                                     <li>Adresse : <span>15 Rue des Lumières, 93100 Montreuil</span></li>
                                     <li>Téléphone: <span>09 61 68 99 90</span></li>
-                                    <li>Email: <span><a href="mailto:contact@digifix.fr" class="__cf_email__"
-                                                data-cfemail="b0c9dfc5c2ddd1d9dcf0d7ddd1d9dc9ed3dfdd">contact@digifix.fr</a></span>
+                                    <li>Email: <span><a href="mailto:contact@digifix.fr">contact@digifix.fr</a></span>
                                     </li>
                                 </ul>
                             </div>
@@ -155,21 +153,11 @@
                                 <ul>
                                     <li>Adresse : <span>130 Rue Jean Jaurès, 92800 Puteaux</span></li>
                                     <li>Téléphone: <span>01 82 14 25 94</span></li>
-                                    <li>Email: <span><a href="mailto:contact@digifix.fr" class="__cf_email__"
-                                                data-cfemail="b0c9dfc5c2ddd1d9dcf0d7ddd1d9dc9ed3dfdd">contact@digifix.fr</a></span>
+                                    <li>Email: <span><a href="mailto:contact@digifix.fr">contact@digifix.fr</a></span>
                                     </li>
                                 </ul>
                             </div>
 
-                            <!-- <div class="contact_info_section">
-                                <div class="contact_info_title">Information</div>
-                                <ul>
-                                    <li>Phone: <span>+53 345 7953 3245</span></li>
-                                    <li>Email: <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                data-cfemail="7801170d0a15191114381f15191114561b1715">[email&#160;protected]</a></span>
-                                    </li>
-                                </ul>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -190,7 +178,6 @@
 
         <div class="footer_overlay"></div>
 		<footer class="footer">
-			<!-- <div class="footer_background" style="background-image:url(images/footer.jpg)"></div> -->
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -227,13 +214,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBPdZCloN6gwC5V6DmBVWd266xcszBj4DE"></script>
     <script src="js/contact.js"></script>
 
-
     <script>
         function sendEmail() {
             const contact_subject = document.querySelector("#contact_subject").value
             const contact_textarea = document.querySelector("#contact_textarea").value
-
-            // console.log(contact_subject, " et ", contact_textarea);
             window.open("mailto:colombegregory@gmail.com?subject="+ contact_subject +"&body=" + contact_textarea + "")
         }
     </script>
