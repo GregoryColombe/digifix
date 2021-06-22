@@ -8,8 +8,6 @@
     margin-top: 95px;
 }
 
-.details_image {}
-
 .details_image_large {
     width: 100%;
 }
@@ -104,7 +102,6 @@
 .details_text p {
     font-weight: 500;
 }
-
 
 .product_quantity {
     display: inline-block;

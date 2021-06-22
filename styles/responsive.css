@@ -186,13 +186,6 @@
         padding-top: 80px
     }
 
-    .page_menu_item>a,
-    .page_menu_selection li a {
-        font-size: 13px;
-        height: 40px;
-        line-height: 40px
-    }
-
     .header_container {
         padding-left: 0;
         padding-right: 0

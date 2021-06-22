@@ -65,7 +65,6 @@ $(document).ready(function () {
 
                     $(document).one('click', function cls(e) {
                         if ($(e.target).hasClass('menu_mm')) {
-                            alert();
                             $(document).one('click', cls);
                         } else {
                             closeMenu();
