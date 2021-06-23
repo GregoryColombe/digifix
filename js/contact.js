@@ -231,7 +231,7 @@ $(document).ready(function () {
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
         // Marker Digifix
-        const image = "../images/logo.png";
+        const image = "../images/logo2.png";
         var myMarkerOptions = {
             position: digifixPuteaux,
             map: map,

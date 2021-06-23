@@ -448,7 +448,6 @@ section {
 .page_menu_item {
     display: block;
     position: relative;
-    vertical-align: middle
 }
 
 .page_menu_nav>li {
