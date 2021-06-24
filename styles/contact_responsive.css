@@ -230,6 +230,10 @@
         height: 350px;
     }
 
+    #map {
+        height: 350px;
+    }
+
     .copyright {
         font-size: 13px;
     }

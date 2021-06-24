@@ -9,10 +9,10 @@ $(document).ready(function () {
 
     // 1. Vars and Inits
 
-    var header = $('.header');
-    var hambActive = false;
-    var menuActive = false;
-    var map;
+    let header = $('.header');
+    let hambActive = false;
+    let menuActive = false;
+    let map;
 
     setHeader();
 
@@ -24,9 +24,8 @@ $(document).ready(function () {
         setHeader();
     });
 
-    initSearch();
     initMenu();
-    initGoogleMap();
+    initMap();
 
     // 2. Set Header
 
@@ -38,24 +37,11 @@ $(document).ready(function () {
         }
     }
 
-    // 3. Init Search
-
-    function initSearch() {
-        if ($('.search').length && $('.search_panel').length) {
-            var search = $('.search');
-            var panel = $('.search_panel');
-
-            search.on('click', function () {
-                panel.toggleClass('active');
-            });
-        }
-    }
-
     // 4. Init Menu
 
     function initMenu() {
         if ($('.hamburger').length) {
-            var hamb = $('.hamburger');
+            let hamb = $('.hamburger');
 
             hamb.on('click', function (event) {
                 event.stopPropagation();
@@ -78,15 +64,15 @@ $(document).ready(function () {
 
             //Handle page menu
             if ($('.page_menu_item').length) {
-                var items = $('.page_menu_item');
+                let items = $('.page_menu_item');
                 items.each(function () {
-                    var item = $(this);
+                    let item = $(this);
 
                     item.on('click', function (evt) {
                         if (item.hasClass('has-children')) {
                             evt.preventDefault();
                             evt.stopPropagation();
-                            var subItem = item.find('> ul');
+                            let subItem = item.find('> ul');
                             if (subItem.hasClass('active')) {
                                 subItem.toggleClass('active');
                                 TweenMax.to(subItem, 0.3, {
@@ -111,14 +97,14 @@ $(document).ready(function () {
     }
 
     function openMenu() {
-        var fs = $('.menu');
+        let fs = $('.menu');
         fs.addClass('active');
         hambActive = true;
         menuActive = true;
     }
 
     function closeMenu() {
-        var fs = $('.menu');
+        let fs = $('.menu');
         fs.removeClass('active');
         hambActive = false;
         menuActive = false;
@@ -126,134 +112,77 @@ $(document).ready(function () {
 
 
     // 5. Init Google Map
-    
-    function initGoogleMap() {
-        const defaultPosition = new google.maps.LatLng(48.86192797558556, 2.3618762179900044);
-        const digifixPuteaux = new google.maps.LatLng(48.862725, 2.287592);
-        const digifixMontreuil = new google.maps.LatLng(48.861928, 2.4415278);
-        
-        var mapOptions = {
-            center: digifixPuteaux,
+
+    function initMap() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlZ29yeWNvbG9tYmUiLCJhIjoiY2sxdWY0bXJyMDV2bDNjcW1rdnI5azM4byJ9.6csVhKC7yWAmHFl6OmFBCw';
+        let map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            center: [2.4415278, 48.861928], // starting position [lng, lat]
             zoom: 15,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            draggable: true,
-            scrollwheel: false,
-            zoomControl: true,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_CENTER
-            },
-            mapTypeControl: true,
-            scaleControl: true,
-            streetViewControl: true,
-            rotateControl: true,
-            fullscreenControl: true,
-            styles: [{
-                    "featureType": "landscape",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#e9e5dc"
-                    }]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "labels",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "labels.icon",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "weight": 1.5
-                    }]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "weight": 1
-                    }]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#fa9e25"
-                    }]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "geometry.stroke",
-                    "stylers": [{
-                        "color": "#e49307"
-                    }]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry",
-                    "stylers": [{
-                        "weight": 0.5
-                    }]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry.fill",
-                    "stylers": [{
-                        "color": "#d9d4ca"
-                    }]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "labels",
-                    "stylers": [{
-                        "visibility": "off"
-                    }]
+            language: "fr-FR",
+        });
+
+        map.on('load', function () {
+            // Load an image from an external URL.
+            map.loadImage(
+                "../images/logo2.png",
+                function (error, image) {
+                    if (error) throw error;
+
+                    // Add the image to the map style.
+                    map.addImage('digifix-logo', image);
+
+                    // Add a data source containing points features.
+                    map.addSource('point-montreuil', {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [{
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [2.4415278, 48.861928]
+                                },
+                            }]
+                        }
+                    });
+                    map.addSource('point-puteaux', {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [{
+                                'type': 'Feature',
+                                'geometry': {
+                                    'type': 'Point',
+                                    'coordinates': [2.2385817, 48.8815513]
+                                }
+                            }]
+                        }
+                    });
+
+
+                    // Add layers to use the image to represent the data.
+                    map.addLayer({
+                        'id': 'points-montreuil',
+                        'type': 'symbol',
+                        'source': 'point-montreuil',
+                        'layout': {
+                            'icon-image': 'digifix-logo',
+                            'icon-size': 0.85
+                        }
+                    });
+                    map.addLayer({
+                        'id': 'points-puteaux',
+                        'type': 'symbol',
+                        'source': 'point-puteaux',
+                        'layout': {
+                            'icon-image': 'digifix-logo',
+                            'icon-size': 0.85
+                        }
+                    });
                 }
-            ]
-        }
-
-        // Initialize a map with options
-        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-        // Marker Digifix
-        const image = "../images/logo2.png";
-        var myMarkerOptions = {
-            position: digifixPuteaux,
-            map: map,
-            icon: image,
-        }
-
-        var myMarkerPuteau = new google.maps.Marker(myMarkerOptions);
-
-        var myMarkerOptions2 = {
-            position: digifixMontreuil,
-            map: map,
-            icon: image,
-        }
-        var myMarkerMontreuil = new google.maps.Marker(myMarkerOptions2);
-
-        // Re-center map after window resize
-        google.maps.event.addDomListener(window, 'resize', function () {
-            setTimeout(function () {
-                google.maps.event.trigger(map, "resize");
-                // map.setCenter(digifixPuteaux);
-            }, 500);
+            );
         });
     }
-
 });
