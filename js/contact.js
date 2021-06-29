@@ -110,15 +110,15 @@ $(document).ready(function () {
         menuActive = false;
     }
 
-
     // 5. Init Google Map
 
     function initMap() {
+        
         mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlZ29yeWNvbG9tYmUiLCJhIjoiY2sxdWY0bXJyMDV2bDNjcW1rdnI5azM4byJ9.6csVhKC7yWAmHFl6OmFBCw';
         let map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v11', // style URL
-            center: [2.4415278, 48.861928], // starting position [lng, lat]
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [2.4415278, 48.861928],
             zoom: 15,
             language: "fr-FR",
         });
